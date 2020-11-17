@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardBody, CardText, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardBody, CardText, CardTitle, Media } from 'reactstrap';
 
 class DishDetail extends Component{
 
     render(){
         
-        const comments = this.props.dish.comments;
-        
         if(this.props.dish!=null){
+
+            const comments = this.props.dish.comments.map((comment_one) => {
+                return (
+                    <div key = {comment_one.id} className = 'col-12 col-md-2 m-3'>
+                        <h4>{comment_one.author}</h4>
+                    </div>
+                );
+            });
+
             return(
                 <div className='row'>
                 <Card>
@@ -18,7 +25,7 @@ class DishDetail extends Component{
                     </CardBody>
                 </Card>
                 <div>
-                    
+                    <Media list>{comments}</Media>
                 </div>
                 </div>
             );
