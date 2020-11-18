@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardBody, CardText, CardTitle, Media } from 'reactstrap';
+import { Card, CardImg, CardBody, CardText, CardTitle } from 'reactstrap';
 
 class DishDetail extends Component{
 
@@ -7,29 +7,39 @@ class DishDetail extends Component{
         
         if(this.props.dish!=null){
 
-            // const comments;
+            //let comments = null;
 
-            // function renderComments(array){
-            //     let array = this.props.dish.comments;
-            //     if(array!=null)
-            //     {
+            function renderComments(array){
 
-            //     }
-            //     else
-            //     {
-            //         comments = null; 
-            //     }
-            // }
-            const comments = this.props.dish.comments.map((comment_one) => {
-                return (
-                    <div key = {comment_one.id} className = 'col-12 col-md-12 m-3'>
-                        <h6>{comment_one.author}</h6>
-                        <p>{comment_one.comment}</p>
-                        <p>{comment_one.date}</p>
-                        <p>{comment_one.rating}</p>
-                    </div>
-                );
-            });
+                if(array.length!==0)
+                {
+                    console.log("Not null");
+                    const commentList = array.map((comment_one) => {
+                        return (
+                            <div key = {comment_one.id} className = 'col-12 col-md-12 m-3'>
+                                <list className='list-unstyled'>
+                                    <p>{comment_one.comment}</p>
+                                    <p>-- {comment_one.author} , {comment_one.date}</p>
+                                </list>
+                            </div>
+                        );
+                    });
+
+                    return(
+                        <div>
+                            <h4>Comments</h4>
+                            {commentList}
+                        </div>
+                    )
+                }
+                else
+                {
+                    console.log("no comment")
+                    return(
+                        <div className="nocomment">No comments</div>
+                    )
+                }
+            }
 
             return(
                 <div className='row'>
@@ -42,8 +52,8 @@ class DishDetail extends Component{
                             </CardBody>
                         </Card>
                     </div>
-                    <div className='column'>
-                        {comments}
+                    <div className='col-12 col-md-5 m-1'>
+                        {renderComments(this.props.dish.comments)}
                     </div>
                 </div>
             );
