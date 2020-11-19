@@ -19,7 +19,7 @@ class DishDetail extends Component{
                             <div key = {comment_one.id} className = 'col-12 col-md-12 m-3'>
                                 <list className='list-unstyled'>
                                     <p>{comment_one.comment}</p>
-                                    <p>-- {comment_one.author} , {comment_one.date}</p>
+                                    <p>-- {comment_one.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment_one.date)))}</p>
                                 </list>
                             </div>
                         );

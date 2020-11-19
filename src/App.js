@@ -1,38 +1,12 @@
-import logo from './logo.svg';
-import { Navbar, NavbarBrand } from 'reactstrap';
-import Menu from './components/MenuComponent';
-import './App.css';
-import {DISHES} from './shared/dishes';
 import React, { useState } from 'react';
+import Main from './components/MainComponent';
+import './App.css';
 
 function App() {
 
-  const dishesState = useState(DISHES);
-  const dishes = dishesState[0];
-
   return (
     <div>
-      <Navbar dark color='primary'>
-        <div className='container'>
-          <NavbarBrand href='/'>Restaurant Confusion</NavbarBrand>
-        </div>
-      </Navbar>
-      <Menu dishes={dishes}/>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-          So m first time with react eh...
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+      <Main />
     </div>
   );
 }
