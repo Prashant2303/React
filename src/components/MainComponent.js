@@ -40,6 +40,12 @@ class Main extends Component {
             )
         }
 
+        //match is one if the 3 props returned by Route
+        const DishWithId = ({match}) => {
+            return(
+                <DishDetail dish = {this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} comments = {this.state.comments.filter((comments) => comments.dishId === parseInt(match.params.dishId,10))}/>
+            )
+        }
         return (
             <div>
                 < Header />
@@ -49,6 +55,7 @@ class Main extends Component {
                     <Route path='/home' component={HomePage} />
                     <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes}/>} />
                     <Route exact path='/contactus' component={Contact} />
+                    <Route path='/menu/:dishId' component={DishWithId} />
                     <Redirect to='/home' />
                 </Switch>
                 < Footer />
