@@ -1,5 +1,4 @@
 import Menu from './MenuComponent';
-
 import React, { Component } from 'react';
 import DishDetail from './DishdetailComponent';
 import Header from './HeaderComponenet';
@@ -12,10 +11,10 @@ import About from '../components/AboutComponent';
 
 const mapStateToProps = state => {
     return{
-        dishes:state.dishes,
-        comments:state.comments,
-        leaders:state.leaders,
-        promotions:state.promotions 
+        dishes: state.dishes,
+        comments: state.comments,
+        leaders: state.leaders,
+        promotions: state.promotions 
     }
 }
 class Main extends Component {
